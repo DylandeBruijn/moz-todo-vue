@@ -1,14 +1,19 @@
 <template>
   <h1>To-Do List</h1>
+  <ul>
+    <li>
+      <to-do-item label="My ToDo Item" :done="false"></to-do-item>
+    </li>
+  </ul>
 </template>
 
 <script>
-
+  import ToDoItem from "./components/ToDoItem.vue";
 
 export default {
   name: 'App',
   components: {
-    
+    ToDoItem
   }
 }
 </script>
