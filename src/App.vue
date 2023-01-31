@@ -59,7 +59,7 @@
 }
 
 .btn__danger {
-  color: hsl(0, 0%, 100%)0%, 100%);
+  color: hsl(0, 0%, 100%);
   background-color: hsl(0, 57%, 51%);
   border-color: hsl(354, 70%, 44%);
 }
