@@ -1,22 +1,28 @@
 <template>
   <div class="custom-checkbox">
-    <input type="checkbox" :id="id" :checked="isDone" class="checkbox" />
-    <label :for="id" class="checkbox-label">{{label}}</label>
+    <input 
+      class="checkbox" 
+      type="checkbox" 
+      :id="id" 
+      :checked="isDone" 
+      @change="$emit('checkbox-changed')"
+    />
+    <label class="checkbox-label" :for="id">{{ label }}</label>
   </div>
 </template>
 <script>
-export default {
-  props: {
-    label: { required: true, type: String },
-    done: { default: false, type: Boolean },
-    id: { required: true, type: String }
-  },
-  data() {
-    return {
-      isDone: this.done
-    };
-  }
-};
+  export default {
+    props: {
+      label: { required: true, type: String },
+      done: { default: false, type: Boolean },
+      id: { required: true, type: String }
+    },
+    data() {
+      return {
+        isDone: this.done
+      };
+    }
+  };
 </script>
 <style scoped>
   .custom-checkbox > .checkbox-label {
