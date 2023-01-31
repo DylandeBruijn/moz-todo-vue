@@ -2,18 +2,18 @@
   <div class="stack-small" v-if="!isEditing">
     <div class="custom-checkbox">
       <input
-        type="checkbox"
         class="checkbox"
+        type="checkbox"
         :id="id"
         :checked="isDone"
         @change="$emit('checkbox-changed')" />
-      <label :for="id" class="checkbox-label">{{ label }}</label>
+      <label class="checkbox-label" :for="id">{{ label }}</label>
     </div>
     <div class="btn-group">
-      <button type="button" class="btn" @click="toggleToItemEditForm">
+      <button class="btn" type="button" @click="toggleToItemEditForm" ref="editButton">
         Edit <span class="visually-hidden">{{label}}</span>
       </button>
-      <button type="button" class="btn btn__danger" @click="deleteToDo">
+      <button class="btn btn__danger" type="button" @click="deleteToDo">
         Delete <span class="visually-hidden">{{label}}</span>
       </button>
     </div>
@@ -53,14 +53,23 @@
         this.$emit('item-deleted');
       },
       toggleToItemEditForm() {
+        console.log(this.$refs.editButton);
         this.isEditing = true;
       },
       itemEdited(newLabel) {
         this.$emit('item-edited', newLabel);
         this.isEditing = false;
+        this.focusOnEditButton();
       },
       editCancelled() {
         this.isEditing = false;
+        this.focusOnEditButton();
+      },
+      focusOnEditButton() {
+        this.$nextTick(() => {
+          const editButtonRef = this.$refs.editButton;
+          editButtonRef.focus();
+        });
       }
     }
   };

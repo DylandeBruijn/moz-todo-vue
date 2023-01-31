@@ -11,7 +11,7 @@
       autocomplete="off"
       v-model.trim="label"
     />
-    <button class="btn btn__primary btn__lg" :disabled="!this.label" type="submit">Add</button>
+    <button class="btn btn__primary btn__lg" type="submit">Add</button>
   </form>
 </template>
 
